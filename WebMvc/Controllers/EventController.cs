@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebMvc.Models;
 using WebMvc.Services;
 using WebMvc.ViewModels;
 namespace WebMvc.Controllers
@@ -18,21 +19,24 @@ namespace WebMvc.Controllers
 
         {
             var itemsOnpage = 10;
-            var event = await _service.GetEventItemsAsync(page ?? 0,itemsOnpage,category,state,location);
+            var events = await _service.GetEventItemsAsync(page ?? 0, itemsOnpage, category, state, location);
 
             var vm = new EventIndexViewModel
             {
                 PaginationInfo = new PaginationInfo
                 {
                     ActualPage = page ?? 0,
-                    ItemsPerPage = itemsOnPage,
-                    TotalItems = event.Count,
-                    TotalPages = (int) Math.Ceiling((decimal)event.Count / itemsOnPage)
+                    ItemsPerPage = itemsOnpage,
+                    TotalItems = events.Count,
+                    TotalPages = (int)Math.Ceiling((decimal)events.Count/itemsOnpage)
                 },
-                EventItems = event.Data,
+
+                EventItems = events.Data,
+
                 Categories = await _service.GetCategoryAsync(),
                 States = await _service.GetStateAsync(),
-                Locations = await _service.GetLocationAsync();
+                Locations = await _service.GetLocationAsync(),
+
                 CategoryFilterApplied = category ?? 0,
                 StateFilterApplied = state ?? 0,
                 LocationFilterApplied = location ?? 0
@@ -42,7 +46,7 @@ namespace WebMvc.Controllers
                vm.PaginationInfo.Next = (vm.PaginationInfo.ActualPage == vm.PaginationInfo.TotalPages - 1) ? "is-disabled" : "";
 
                return View(vm);
-          }
+       }
 
          /*
          [Authorize]
