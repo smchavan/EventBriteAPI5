@@ -4,7 +4,7 @@ networks:
 services:
   Event:
     build:
-      context: C:\Users\smvnc\source\repos\EventsNew\EventCatalogAPI
+      context: C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI
       dockerfile: Dockerfile
       labels:
         com.microsoft.created-by: visual-studio
@@ -38,7 +38,7 @@ services:
     - published: 5060
       target: 80
     volumes:
-    - C:\Users\smvnc\source\repos\EventsNew\EventCatalogAPI:/app:rw
+    - C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI:/app:rw
     - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
     - C:\Users\smvnc\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
     - C:\Users\smvnc\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro

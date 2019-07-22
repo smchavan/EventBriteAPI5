@@ -27,7 +27,7 @@ services:
 
 
   mssqlserver:
-    image:  "microsoft/mssql-server-linux:latest"
+    image: "microsoft/mssql-server-linux:latest"
     environment:
       ACCEPT_EULA: Y
       SA_PASSWORD: EventApi(!)

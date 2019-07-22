@@ -3,3 +3,8 @@ C:\Users\smvnc\source\repos\EventsNew\bin\Debug\EventCatalogAPI.pdb
 C:\Users\smvnc\source\repos\EventsNew\obj\Debug\docker-compose.dcprojAssemblyReference.cache
 C:\Users\smvnc\source\repos\EventsNew\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Users\smvnc\source\repos\EventsNew\obj\Debug\docker-compose.dcproj.CopyComplete
+C:\Users\smvnc\source\repos\EventBriteAPI5\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+C:\Users\smvnc\source\repos\EventBriteAPI5\bin\Debug\EventCatalogAPI.dll
+C:\Users\smvnc\source\repos\EventBriteAPI5\bin\Debug\EventCatalogAPI.pdb
+C:\Users\smvnc\source\repos\EventBriteAPI5\obj\Debug\docker-compose.dcprojAssemblyReference.cache
+C:\Users\smvnc\source\repos\EventBriteAPI5\obj\Debug\docker-compose.dcproj.CopyComplete
