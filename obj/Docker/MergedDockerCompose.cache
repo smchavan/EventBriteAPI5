@@ -2,7 +2,7 @@ networks:
   backend: {}
   frontend: {}
 services:
-  Event:
+  event:
     build:
       context: C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI
       dockerfile: Dockerfile
@@ -33,4 +33,20 @@ services:
     ports:
     - published: 1448
       target: 1433
+  webmvc:
+    build:
+      context: C:\Users\smvnc\source\repos\EventBriteAPI5\webmvc
+      dockerfile: Dockerfile
+    container_name: webshop
+    depends_on:
+    - event
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      EventUrl: http://event
+    image: events/webmvc
+    networks:
+      frontend: null
+    ports:
+    - published: 5035
+      target: 80
 version: '3.4'

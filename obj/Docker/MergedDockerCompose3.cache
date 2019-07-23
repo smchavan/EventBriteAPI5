@@ -63,7 +63,7 @@ services:
       labels:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: WebMvc
-      target: base
+      target: build
     container_name: webshop
     depends_on:
     - event
@@ -85,7 +85,7 @@ services:
     networks:
       frontend: null
     ports:
-    - published: 5090
+    - published: 5035
       target: 80
     volumes:
     - C:\Users\smvnc\source\repos\EventBriteAPI5\webmvc:/app:rw

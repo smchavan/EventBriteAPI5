@@ -47,6 +47,6 @@ services:
     networks:
       frontend: null
     ports:
-    - published: 5090
+    - published: 5035
       target: 80
 version: '3.4'

@@ -31,7 +31,7 @@ namespace WebMvc.Infrastructure
                     var categoriesQs = (category.HasValue) ? category.Value.ToString() : "null";
                     var statesQs = (state.HasValue) ? state.Value.ToString() : "null";
                     var locationsQs = (location.HasValue) ? location.Value.ToString() : "null";
-                    filterQs = $"/state/{statesQs}/category/{categoriesQs}/location/{locationsQs}";
+                    filterQs = $"/category/{categoriesQs}/state/{statesQs}/location/{locationsQs}";
                 }
 
                 return $"{baseUri}items{filterQs}?pageIndex={page}&pageSize={take}";

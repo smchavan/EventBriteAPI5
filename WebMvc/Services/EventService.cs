@@ -36,7 +36,7 @@ namespace WebMvc.Services
                 }
             };
 
-            var categories = JArray.Parse(dataString);
+            var categories = JArray.Parse(dataString);//JsonConvert.DeserializeObject<MyDTO>(input);
             foreach (var category in categories)
             {
                 items.Add(
