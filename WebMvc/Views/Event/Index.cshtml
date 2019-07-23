@@ -1,7 +1,7 @@
-
+﻿
 @{
-    ViewData["Title"] = "Event";
-   
+    ViewData["Title"] = "Catalog";
+    @model WebMvc.ViewModels.EventIndexViewModel
 }
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -12,35 +12,26 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="~/images/banner.jpg" alt="ASP.NET" class="img-responsive" />
+            <img src="~/images/banner.png" alt="ASP.NET" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
+                    Incredible Engagement Rings.
                 </p>
             </div>
         </div>
         <div class="item">
-            <img src="~/images/banner-2.jpg" alt="Visual Studio" class="img-responsive" />
+            <img src="~/images/banner-2.png" alt="Visual Studio" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
+                    Diamond Engagement Rings are a thing!
                 </p>
             </div>
         </div>
         <div class="item">
-            <img src="~/images/banner-3.jpg" alt="Package Management" class="img-responsive" />
+            <img src="~/images/banner-3.png" alt="Package Management" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        Learn More
-                    </a>
+                    Engagement rings are epitome of luxury.
                 </p>
             </div>
         </div>
@@ -54,5 +45,45 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
+
+<section class="esh-event-filters">
+    <div class="container">
+        <form asp-action="Index" asp-controller="Event" method="post">
+            <label class="esh-event-label" data-title="Category">
+                <select asp-for="@Model.CategoryFilterApplied" asp-items="@Model.Categories" class="esh-event-filter"></select>
+            </label>
+            <label class="esh-event-label" data-title="State">
+                <select asp-for="@Model.StateFilterApplied" asp-items="@Model.States" class="esh-event-filter"></select>
+            </label>
+            <label class="esh-event-label" data-title="Location">
+                <select asp-for="@Model.LocationFilterApplied" asp-items="@Model.Locations" class="esh-event-filter"></select>
+            </label>
+            <input class="esh-event-send" type="image" src="~/images/arrow-right.svg" />
+        </form>
+    </div>
+</section>
+<div class="container">
+    @if (Model.EventItems.Count() > 0)
+    {
+        @Html.Partial("_pagination", Model.PaginationInfo)
+
+        <div class="esh-event-items row">
+            @foreach (var eventItem in Model.EventItems)
+            {
+                <div class="esh-event-item col-md-4">
+                    @Html.Partial("_product", eventItem)
+                </div>
+            }
+        </div>
+
+        @Html.Partial("_pagination", Model.PaginationInfo)
+    }
+    else
+    {
+        <div class="esh-event-items row">
+            THERE ARE NO RESULTS THAT MATCH YOUR SEARCH
+        </div>
+    }
 </div>
 
