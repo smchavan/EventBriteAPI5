@@ -8,3 +8,7 @@ C:\Users\smvnc\source\repos\EventBriteAPI5\bin\Debug\EventCatalogAPI.dll
 C:\Users\smvnc\source\repos\EventBriteAPI5\bin\Debug\EventCatalogAPI.pdb
 C:\Users\smvnc\source\repos\EventBriteAPI5\obj\Debug\docker-compose.dcprojAssemblyReference.cache
 C:\Users\smvnc\source\repos\EventBriteAPI5\obj\Debug\docker-compose.dcproj.CopyComplete
+C:\Users\smvnc\source\repos\EventBriteAPI5\bin\Debug\WebMvc.Views.dll
+C:\Users\smvnc\source\repos\EventBriteAPI5\bin\Debug\WebMvc.Views.pdb
+C:\Users\smvnc\source\repos\EventBriteAPI5\bin\Debug\WebMvc.dll
+C:\Users\smvnc\source\repos\EventBriteAPI5\bin\Debug\WebMvc.pdb

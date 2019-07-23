@@ -30,3 +30,4 @@ C:\Users\smvnc\source\repos\EventBriteAPI5\WebMvc\obj\Debug\netcoreapp2.1\WebMvc
 C:\Users\smvnc\source\repos\EventBriteAPI5\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.dll
 C:\Users\smvnc\source\repos\EventBriteAPI5\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.pdb
 C:\Users\smvnc\source\repos\EventBriteAPI5\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.csproj.CopyComplete
+C:\Users\smvnc\source\repos\EventBriteAPI5\WebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Event\Index.g.cshtml.cs
