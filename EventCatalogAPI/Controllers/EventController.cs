@@ -35,7 +35,7 @@ namespace EventCatalogAPI.Controllers
 
 
 
-        // GET api/catalog/items?pageSize=10&pageIndex=2
+        // GET api/event/items?pageSize=10&pageIndex=2
 
         [HttpGet]
 
@@ -76,7 +76,7 @@ namespace EventCatalogAPI.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/category/{eventCategoryId}/brand/{catalogBrandId}")]
+        [Route("[action]/category/{eventCategoryId}/state/{eventStateId}/location/{eventLocationId}")]
         public async Task<IActionResult> Items(int? eventCategoryId,
             int? eventStateId, int? eventLocationId,
             [FromQuery] int pageSize = 6,
@@ -180,6 +180,99 @@ namespace EventCatalogAPI.Controllers
                  , _config["ExternalEventBaseUrl"]);
             return Ok(item);
         }
+
+        //GET api/Event/items/withname/Wonder?pageSize=2&pageIndex=0
+        [HttpGet]
+        [Route("[action]/withname/{name:minlength(1)}")]
+        public async Task<IActionResult> Items(string name,
+            [FromQuery] int pageSize = 6,
+            [FromQuery] int pageIndex = 0)
+        {
+            var totalItems = await _context.EventItems
+                               .Where(c => c.Name.StartsWith(name))
+                              .LongCountAsync();
+            var itemsOnPage = await _context.EventItems
+                              .Where(c => c.Name.StartsWith(name))
+                              .OrderBy(c => c.Name)
+                              .Skip(pageSize * pageIndex)
+                              .Take(pageSize)
+                              .ToListAsync();
+            itemsOnPage = ChangePictureUrl(itemsOnPage);
+            var model = new PaginatedItemsViewModel<EventItem>
+            {
+                PageSize = pageSize,
+                PageIndex = pageIndex,
+                Count = totalItems,
+                Data = itemsOnPage
+            };
+
+            return Ok(model);
+
+        }
+
+        [HttpPost]
+        [Route("items")]
+        public async Task<IActionResult> CreateProduct(
+            [FromBody] EventItem product)
+        {
+            var item = new EventItem
+            {
+                
+                EventCategoryId = product.EventCategoryId,
+                EventStateId = product.EventStateId,
+                EventLocationId = product.EventLocationId,
+                EventDateTime = product.EventDateTime,
+                ContactName = product.ContactName,
+                PhoneNumber = product.PhoneNumber,
+                Description = product.Description,
+                Name = product.Name,
+                PictureUrl = product.PictureUrl,
+                Price = product.Price
+            };
+            _context.EventItems.Add(item);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetItemsById), new { id = item.Id });
+        }
+
+
+        [HttpPut]
+        [Route("items")]
+        public async Task<IActionResult> UpdateProduct(
+            [FromBody] EventItem productToUpdate)
+        {
+            var eventItem = await _context.EventItems
+                              .SingleOrDefaultAsync
+                              (i => i.Id == productToUpdate.Id);
+            if (eventItem == null)
+            {
+                return NotFound(new { Message = $"Item with id {productToUpdate.Id} not found." });
+            }
+            eventItem = productToUpdate;
+            _context.EventItems.Update(eventItem);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetItemsById), new { id = productToUpdate.Id });
+        }
+
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _context.EventItems
+                .SingleOrDefaultAsync(p => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+
+            }
+            _context.EventItems.Remove(product);
+            await _context.SaveChangesAsync();
+            return NoContent();
+
+        }
+
+
 
     }
 }
