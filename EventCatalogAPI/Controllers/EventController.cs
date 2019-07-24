@@ -75,6 +75,49 @@ namespace EventCatalogAPI.Controllers
 
         }
 
+        [HttpGet]
+        [Route("[action]/category/{eventCategoryId}/brand/{catalogBrandId}")]
+        public async Task<IActionResult> Items(int? eventCategoryId,
+            int? eventStateId, int? eventLocationId,
+            [FromQuery] int pageSize = 6,
+            [FromQuery] int pageIndex = 0)
+        {
+            var root = (IQueryable<EventItem>)_context.EventItems;
+
+            if (eventCategoryId.HasValue)
+            {
+                root = root.Where(c => c.EventCategoryId == eventCategoryId);
+            }
+            if (eventStateId.HasValue)
+            {
+                root = root.Where(c => c.EventStateId == eventStateId);
+            }
+
+            if (eventLocationId.HasValue)
+            {
+                root = root.Where(c => c.EventLocationId == eventLocationId);
+            }
+
+            var totalItems = await root
+                              .LongCountAsync();
+            var itemsOnPage = await root
+                              .OrderBy(c => c.Name)
+                              .Skip(pageSize * pageIndex)
+                              .Take(pageSize)
+                              .ToListAsync();
+            itemsOnPage = ChangePictureUrl(itemsOnPage);
+            var model = new PaginatedItemsViewModel<EventItem>
+            {
+                PageSize = pageSize,
+                PageIndex = pageIndex,
+                Count = totalItems,
+                Data = itemsOnPage
+            };
+
+            return Ok(model);
+
+        }
+
         private List<EventItem> ChangePictureUrl(List<EventItem> items)
         {
            
@@ -102,6 +145,15 @@ namespace EventCatalogAPI.Controllers
         public async Task<IActionResult> Eventstates()
         {
             var items = await _context.EventStates.ToListAsync();
+            return Ok(items);
+        }
+
+
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> EventLocations()
+        {
+            var items = await _context.EventLocations.ToListAsync();
             return Ok(items);
         }
 

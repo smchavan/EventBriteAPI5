@@ -48,12 +48,37 @@ namespace WebMvc.Controllers
                return View(vm);
        }
 
-         /*
+         
          [Authorize]
          public IActionResult About()
          {
           ViewData["Message"] = "Your application description page.";
           return View();
-         }*/
+         }
   }
 }
+
+/*
+ * public async Task<IActionResult> Index(int? brandFilterApplied,
+            int? typeFilterApplied, int? page)
+        {
+            var itemsOnPage = 10;
+            var catalog = await _service.GetCatalogItemsAsync(page ?? 0, itemsOnPage,
+                brandFilterApplied, typeFilterApplied);
+
+            var vm = new CatalogIndexViewModel
+            {
+                CatalogItems = catalog.Data,
+                Brands = await _service.GetBrandsAsync(),
+                Types = await _service.GetTypesAsync(),
+                BrandFilterApplied = brandFilterApplied ?? 0,
+                TypesFilterApplied = typeFilterApplied ?? 0,
+                PaginationInfo = new PaginationInfo
+                {
+                    ActualPage = page ?? 0,
+                    ItemsPerPage = itemsOnPage,
+                    TotalItems = catalog.Count,
+                    TotalPages = (int)Math.Ceiling((decimal)catalog.Count / itemsOnPage)
+                }
+            };
+*/

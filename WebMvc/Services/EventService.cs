@@ -20,7 +20,7 @@ namespace WebMvc.Services
             IConfiguration config)
         {
             _client = httpclient;
-            _baseUri = $"{config["EventUrl"]}/api/event/";
+            _baseUri = $"{config["EventUrl"]}/api/event/";// _baseUri = $"{config["CatalogUrl"]}/api/catalog/";
         }
         public async Task<IEnumerable<SelectListItem>> GetCategoryAsync()
         {
@@ -75,7 +75,7 @@ namespace WebMvc.Services
                     Selected = true
                 }
             };
-
+            
             var locations = JArray.Parse(dataString);
             foreach (var location in locations)
             {
