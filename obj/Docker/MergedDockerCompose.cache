@@ -33,6 +33,23 @@ services:
     ports:
     - published: 1448
       target: 1433
+  tokenserver:
+    build:
+      context: C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi
+      dockerfile: Dockerfile
+    container_name: tokenserviceapi
+    depends_on:
+    - mssqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      MvcClient: http://localhost:5045
+    image: jewels/tokenapi
+    networks:
+      backend: null
+      frontend: null
+    ports:
+    - published: 5015
+      target: 80
   webmvc:
     build:
       context: C:\Users\smvnc\source\repos\EventBriteAPI5\webmvc
@@ -40,13 +57,16 @@ services:
     container_name: webshop
     depends_on:
     - event
+    - tokenserver
     environment:
       ASPNETCORE_ENVIRONMENT: Development
+      CallBackUrl: http://localhost:5045
       EventUrl: http://event
+      IdentityUrl: http://192.168.1.22:5015
     image: events/webmvc
     networks:
       frontend: null
     ports:
-    - published: 5035
+    - published: 5045
       target: 80
 version: '3.4'
