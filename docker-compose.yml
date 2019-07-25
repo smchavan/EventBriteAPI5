@@ -15,7 +15,7 @@ services:
       DatabaseName: EventDb
       DatabaseUser: sa
       DatabaseUserPassword: EventApi(!)
-      ExternalCatalogBaseUrl: http://localhost:5060
+      ExternalEventBaseUrl: http://localhost:5060
     ports:
       - "5060:80"
     container_name: eventapi
@@ -29,13 +29,13 @@ services:
     build:
       context: .\TokenServiceApi
       dockerfile: Dockerfile
-    image: jewels/tokenapi
+    image: events/tokenapi
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       MvcClient: http://localhost:5045
     ports:
       - "5015:80"
-    container_name: tokenserviceapi
+    container_name: tokenserviceapi1
     networks:
       - backend
       - frontend
@@ -47,7 +47,7 @@ services:
       context: .\webmvc
       dockerfile: Dockerfile
     image: events/webmvc
-    container_name: webshop
+    container_name: webshop1
     environment:
       EventUrl: http://event
       IdentityUrl: http://192.168.1.22:5015
