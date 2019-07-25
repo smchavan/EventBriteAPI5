@@ -20,7 +20,7 @@ services:
       DatabaseServer: mssqlserver
       DatabaseUser: sa
       DatabaseUserPassword: EventApi(!)
-      ExternalCatalogBaseUrl: http://localhost:5060
+      ExternalEventBaseUrl: http://localhost:5060
       NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
     image: events/eventapi:dev
     labels:
@@ -64,7 +64,7 @@ services:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: TokenServiceApi
       target: base
-    container_name: tokenserviceapi
+    container_name: tokenserviceapi1
     depends_on:
     - mssqlserver
     entrypoint: tail -f /dev/null
@@ -73,7 +73,7 @@ services:
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
       MvcClient: http://localhost:5045
       NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
-    image: jewels/tokenapi:dev
+    image: events/tokenapi:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
         --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath
@@ -104,7 +104,7 @@ services:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: WebMvc
       target: build
-    container_name: webshop
+    container_name: webshop1
     depends_on:
     - event
     - tokenserver

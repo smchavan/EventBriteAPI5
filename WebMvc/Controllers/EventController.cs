@@ -18,7 +18,7 @@ namespace WebMvc.Controllers
         public async Task<IActionResult> Index(int? category, int? state, int? location, int? page)
 
         {
-            var itemsOnpage = 10;
+            var itemsOnpage = 5;
             var events = await _service.GetEventItemsAsync(page ?? 0, itemsOnpage, category, state, location);
 
             var vm = new EventIndexViewModel
