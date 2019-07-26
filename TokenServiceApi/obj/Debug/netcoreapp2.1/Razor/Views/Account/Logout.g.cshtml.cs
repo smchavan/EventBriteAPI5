@@ -75,7 +75,7 @@ using TokenServiceApi.Models.ManageViewModels;
             WriteLiteral("\r\n<div class=\"logout-page\">\r\n    <div class=\"page-header\">\r\n        <h1>Logout</h1>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-6\">\r\n            <p>Would you like to logout of IdentityServer?</p>\r\n            ");
             EndContext();
             BeginContext(254, 330, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a4c9d047212405798ae701ddf345213", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "896a08baeb7e416ab2d9fe07e25e0609", async() => {
                 BeginContext(280, 54, true);
                 WriteLiteral("\r\n                <input type=\"hidden\" name=\"logoutId\"");
                 EndContext();

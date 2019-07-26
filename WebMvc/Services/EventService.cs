@@ -83,7 +83,7 @@ namespace WebMvc.Services
                     new SelectListItem
                     {
                         Value = location.Value<string>("id"),
-                        Text = location.Value<string>("location")
+                        Text = location.Value<string>("locationname")
                     }
                  );
             }
