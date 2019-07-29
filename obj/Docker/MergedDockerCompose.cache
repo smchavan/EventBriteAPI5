@@ -62,7 +62,7 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
       CallBackUrl: http://localhost:5045
       EventUrl: http://event
-      IdentityUrl: http://192.168.1.22:5015
+      IdentityUrl: 192.168.1.22:5015
     image: events/webmvc
     networks:
       frontend: null

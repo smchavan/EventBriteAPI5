@@ -51,11 +51,11 @@ namespace WebMvc.Services
             return items;
         }
 
-        public async Task<Event> GetEventItemsAsync(int page, int size, int? category, int? state, int? location)
+        public async Task<Event> GetEventItemsAsync(int page, int size, int? category, int? state, int? locationName)
         {
             var eventItemsUri = ApiPaths.Event
                             .GetAllEventItems(_baseUri,
-                                page, size, category,state,location);
+                                page, size, category,state,locationName);
 
             var dataString = await _client.GetStringAsync(eventItemsUri);
             var response = JsonConvert.DeserializeObject<Event>(dataString);
@@ -83,7 +83,7 @@ namespace WebMvc.Services
                     new SelectListItem
                     {
                         Value = location.Value<string>("id"),
-                        Text = location.Value<string>("locationname")
+                        Text = location.Value<string>("locationName")
                     }
                  );
             }

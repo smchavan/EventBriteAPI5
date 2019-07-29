@@ -15,11 +15,11 @@ namespace WebMvc.Controllers
         public EventController(IEventService service) =>
             _service = service;
 
-        public async Task<IActionResult> Index(int? category, int? state, int? location, int? page)
+        public async Task<IActionResult> Index(int? CategoryFilterApplied, int? StateFilterApplied, int? LocationFilterApplied, int? page)
 
         {
             var itemsOnpage = 5;
-            var events = await _service.GetEventItemsAsync(page ?? 0, itemsOnpage, category, state, location);
+            var events = await _service.GetEventItemsAsync(page ?? 0, itemsOnpage, CategoryFilterApplied, StateFilterApplied, LocationFilterApplied);
 
             var vm = new EventIndexViewModel
             {
@@ -37,9 +37,9 @@ namespace WebMvc.Controllers
                 States = await _service.GetStateAsync(),
                 Locations = await _service.GetLocationAsync(),
 
-                CategoryFilterApplied = category ?? 0,
-                StateFilterApplied = state ?? 0,
-                LocationFilterApplied = location ?? 0
+                CategoryFilterApplied = CategoryFilterApplied ?? 0,
+                StateFilterApplied = StateFilterApplied ?? 0,
+                LocationFilterApplied = LocationFilterApplied ?? 0
             };
 
                vm.PaginationInfo.Previous = (vm.PaginationInfo.ActualPage == 0) ? "is-disabled" : "";
@@ -58,27 +58,3 @@ namespace WebMvc.Controllers
   }
 }
 
-/*
- * public async Task<IActionResult> Index(int? brandFilterApplied,
-            int? typeFilterApplied, int? page)
-        {
-            var itemsOnPage = 10;
-            var catalog = await _service.GetCatalogItemsAsync(page ?? 0, itemsOnPage,
-                brandFilterApplied, typeFilterApplied);
-
-            var vm = new CatalogIndexViewModel
-            {
-                CatalogItems = catalog.Data,
-                Brands = await _service.GetBrandsAsync(),
-                Types = await _service.GetTypesAsync(),
-                BrandFilterApplied = brandFilterApplied ?? 0,
-                TypesFilterApplied = typeFilterApplied ?? 0,
-                PaginationInfo = new PaginationInfo
-                {
-                    ActualPage = page ?? 0,
-                    ItemsPerPage = itemsOnPage,
-                    TotalItems = catalog.Count,
-                    TotalPages = (int)Math.Ceiling((decimal)catalog.Count / itemsOnPage)
-                }
-            };
-*/

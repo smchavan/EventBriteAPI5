@@ -50,7 +50,7 @@ services:
     container_name: webshop1
     environment:
       EventUrl: http://event
-      IdentityUrl: http://192.168.1.22:5015
+      IdentityUrl: 192.168.1.22:5015
       CallBackUrl: http://localhost:5045
       ASPNETCORE_ENVIRONMENT: Development
     ports:

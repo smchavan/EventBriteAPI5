@@ -114,7 +114,7 @@ services:
       CallBackUrl: http://localhost:5045
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
       EventUrl: http://event
-      IdentityUrl: http://192.168.1.22:5015
+      IdentityUrl: 192.168.1.22:5015
       NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
     image: events/webmvc:dev
     labels:
