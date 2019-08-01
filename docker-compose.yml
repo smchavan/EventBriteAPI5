@@ -25,6 +25,48 @@ services:
     depends_on:
       - mssqlserver
 
+  cart:
+    build:
+      context: .\CartApi
+      dockerfile: Dockerfile
+    image: events/cartapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      IdentityUrl: http://192.168.1.22:5005
+      ConnectionString: basket.data
+    ports:
+      - "5005:80"
+    container_name: cartapi
+    networks:
+      - backend
+      - frontend
+    depends_on:
+      - basket.data
+      - tokenserver
+
+  order:
+    build:
+      context: .\OrderApi
+      dockerfile: Dockerfile
+    image: events/orderapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      IdentityUrl: http://192.168.1.22:5065
+      SQLSERVER_HOST: eventdb
+      SA_PASSWORD: EventApi(!)
+      DATABASE: OrdersDb
+    ports:
+      - "5065:80"
+    container_name: orderapi
+    networks:
+      - backend
+      - frontend
+    depends_on:
+      - mssqlserver
+      - tokenserver
+      
+      
+
   tokenserver:
     build:
       context: .\TokenServiceApi
@@ -60,6 +102,9 @@ services:
     depends_on:
       - event
       - tokenserver
+      - cart
+      - order
+
 
   mssqlserver:
     image: "microsoft/mssql-server-linux:latest"
@@ -69,5 +114,12 @@ services:
     container_name: eventdb
     ports:
       - "1448:1433"
+    networks:
+      - backend
+
+  basket.data:
+    image: redis
+    ports:
+      - "6378:6379"  
     networks:
       - backend

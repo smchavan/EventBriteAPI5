@@ -1,0 +1,11 @@
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\bin\Debug\netcoreapp2.0\OrderApi.deps.json
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\bin\Debug\netcoreapp2.0\OrderApi.runtimeconfig.json
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\bin\Debug\netcoreapp2.0\OrderApi.runtimeconfig.dev.json
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\bin\Debug\netcoreapp2.0\OrderApi.dll
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\bin\Debug\netcoreapp2.0\OrderApi.pdb
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\obj\Debug\netcoreapp2.0\OrderApi.csprojAssemblyReference.cache
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\obj\Debug\netcoreapp2.0\OrderApi.csproj.CoreCompileInputs.cache
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\obj\Debug\netcoreapp2.0\OrderApi.AssemblyInfoInputs.cache
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\obj\Debug\netcoreapp2.0\OrderApi.AssemblyInfo.cs
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\obj\Debug\netcoreapp2.0\OrderApi.dll
+C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi\obj\Debug\netcoreapp2.0\OrderApi.pdb

@@ -1,0 +1,191 @@
+networks:
+  backend: {}
+  frontend: {}
+services:
+  basket.data:
+    image: redis
+    networks:
+      backend: null
+    ports:
+    - published: 6378
+      target: 6379
+  cart:
+    build:
+      context: C:\Users\smvnc\source\repos\EventBriteAPI5\CartApi
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: CartApi
+      target: build
+    container_name: cartapi
+    depends_on:
+    - basket.data
+    - tokenserver
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionString: basket.data
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      IdentityUrl: http://192.168.1.22:5005
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+    image: events/cartapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath
+        /root/.nuget/fallbackpackages2  "bin/Debug/netcoreapp2.1/CartApi.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      backend: null
+      frontend: null
+    ports:
+    - published: 5005
+      target: 80
+    volumes:
+    - C:\Users\smvnc\source\repos\EventBriteAPI5\CartApi:/app:rw
+    - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Users\smvnc\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\smvnc\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
+    - C:\Users\smvnc\.nuget\packages:/root/.nuget/packages:ro
+  event:
+    build:
+      context: C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: EventCatalogAPI
+      target: build
+    container_name: eventapi
+    depends_on:
+    - mssqlserver
+    entrypoint: tail -f /dev/null
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      DatabaseName: EventDb
+      DatabaseServer: mssqlserver
+      DatabaseUser: sa
+      DatabaseUserPassword: EventApi(!)
+      ExternalEventBaseUrl: http://localhost:5060
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+    image: events/eventapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath
+        /root/.nuget/fallbackpackages2  "bin/Debug/netcoreapp2.1/EventCatalogAPI.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      backend: null
+      frontend: null
+    ports:
+    - published: 5060
+      target: 80
+    volumes:
+    - C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI:/app:rw
+    - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Users\smvnc\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\smvnc\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
+    - C:\Users\smvnc\.nuget\packages:/root/.nuget/packages:ro
+  mssqlserver:
+    container_name: eventdb
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: EventApi(!)
+    image: microsoft/mssql-server-linux:latest
+    networks:
+      backend: null
+    ports:
+    - published: 1448
+      target: 1433
+  tokenserver:
+    build:
+      context: C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: TokenServiceApi
+      target: base
+    container_name: tokenserviceapi1
+    depends_on:
+    - mssqlserver
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      MvcClient: http://localhost:5045
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+    image: events/tokenapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath
+        /root/.nuget/fallbackpackages2  "bin/Debug/netcoreapp2.1/TokenServiceApi.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      backend: null
+      frontend: null
+    ports:
+    - published: 5015
+      target: 80
+    volumes:
+    - C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi:/app:rw
+    - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Users\smvnc\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\smvnc\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
+    - C:\Users\smvnc\.nuget\packages:/root/.nuget/packages:ro
+  webmvc:
+    build:
+      context: C:\Users\smvnc\source\repos\EventBriteAPI5\webmvc
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: WebMvc
+      target: build
+    container_name: webshop1
+    depends_on:
+    - cart
+    - event
+    - tokenserver
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      CallBackUrl: http://localhost:5045
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      EventUrl: http://event
+      IdentityUrl: 192.168.1.22:5015
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+    image: events/webmvc:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath
+        /root/.nuget/fallbackpackages2  "bin/Debug/netcoreapp2.1/WebMvc.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      frontend: null
+    ports:
+    - published: 5045
+      target: 80
+    volumes:
+    - C:\Users\smvnc\source\repos\EventBriteAPI5\webmvc:/app:rw
+    - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Users\smvnc\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\smvnc\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
+    - C:\Users\smvnc\.nuget\packages:/root/.nuget/packages:ro
+version: '3.4'
