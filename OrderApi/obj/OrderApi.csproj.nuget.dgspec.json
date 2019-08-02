@@ -73,9 +73,17 @@
               "version": "[2.0.0, )",
               "autoReferenced": true
             },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[2.1.1, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[17.8.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

@@ -31,7 +31,6 @@ C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI\bin\Debug\netcoreapp2
 C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI\bin\Debug\netcoreapp2.1\EventCatalogAPI.runtimeconfig.dev.json
 C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI\bin\Debug\netcoreapp2.1\EventCatalogAPI.dll
 C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI\bin\Debug\netcoreapp2.1\EventCatalogAPI.pdb
-C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI\obj\Debug\netcoreapp2.1\EventCatalogAPI.csprojAssemblyReference.cache
 C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI\obj\Debug\netcoreapp2.1\EventCatalogAPI.csproj.CoreCompileInputs.cache
 C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI\obj\Debug\netcoreapp2.1\EventCatalogAPI.RazorAssemblyInfo.cache
 C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI\obj\Debug\netcoreapp2.1\EventCatalogAPI.RazorAssemblyInfo.cs

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using WebMvc.Infrastructure;
+using WebMvc.Models;
 using WebMvc.Services;
 
 namespace WebMvc
@@ -37,6 +38,12 @@ namespace WebMvc
             });
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IIdentityService<ApplicationUser>, IdentityService>();
+            services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IOrderService, OrderService>();
+
             var identityUrl = Configuration.GetValue<string>("IdentityUrl");
             var callBackUrl = Configuration.GetValue<string>("CallBackUrl");
 
@@ -106,3 +113,23 @@ namespace WebMvc
         }
     }
 }
+/*
+ * private readonly HttpClientHandler _handler;
+
+public Startup(IHostingEnvironment env, IConfiguration config,
+    ILoggerFactory loggerFactory)
+    {
+        _env = env;
+        _config = config;
+        _loggerFactory = loggerFactory;
+        Configuration = config;
+        _handler = new HttpClientHandler();
+
+        _handler.ClientCertificates.Add(FindClientCertificate());//same x509cert2 that proxy server uses
+        _handler.AllowAutoRedirect = true;
+
+
+
+
+    }
+ */

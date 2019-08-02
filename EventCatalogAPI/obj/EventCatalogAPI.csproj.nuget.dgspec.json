@@ -68,9 +68,17 @@
               "target": "Package",
               "version": "[2.1.9, )"
             },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.0.601, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[17.8.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

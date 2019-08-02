@@ -2806,6 +2806,15 @@
           "lib/netcoreapp2.1/Pipelines.Sockets.Unofficial.dll": {}
         }
       },
+      "Polly/7.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Polly.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {}
+        }
+      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3047,6 +3056,21 @@
         },
         "runtime": {
           "lib/netstandard2.0/StackExchange.Redis.dll": {}
+        }
+      },
+      "Stripe.net/17.8.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Console": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.2/Stripe.net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.2/Stripe.net.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -7882,6 +7906,21 @@
         "pipelines.sockets.unofficial.nuspec"
       ]
     },
+    "Polly/7.1.0": {
+      "sha512": "mpQsvlEn4ipgICh5CGyVLPV93RFVzOrBG7wPZfzY8gExh7XgWQn0GCDY9nudbUEJ12UiGPP9i4+CohghBvzhmg==",
+      "type": "package",
+      "path": "polly/7.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.1/Polly.dll",
+        "lib/netstandard1.1/Polly.xml",
+        "lib/netstandard2.0/Polly.dll",
+        "lib/netstandard2.0/Polly.xml",
+        "polly.7.1.0.nupkg.sha512",
+        "polly.nuspec"
+      ]
+    },
     "Remotion.Linq/2.2.0": {
       "sha512": "fK/76UmpC0FXBlGDFVPLJHQlDLYnGC+XY3eoDgCgbtrhi0vzbXDQ3n/IYHhqSKqXQfGw/u04A1drWs7rFVkRjw==",
       "type": "package",
@@ -8200,6 +8239,19 @@
         "lib/netstandard2.0/StackExchange.Redis.xml",
         "stackexchange.redis.2.0.601.nupkg.sha512",
         "stackexchange.redis.nuspec"
+      ]
+    },
+    "Stripe.net/17.8.0": {
+      "sha512": "DRXWxeRgZNBPuNminjCg/PiSZZrYV/MIutagbkwQZTBivUPLhvo0n/wXDnXZlJb52iPGV/5VyNAg2aDMkU77/w==",
+      "type": "package",
+      "path": "stripe.net/17.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Stripe.net.dll",
+        "lib/netstandard1.2/Stripe.net.dll",
+        "stripe.net.17.8.0.nupkg.sha512",
+        "stripe.net.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -12875,7 +12927,9 @@
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.7.9",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.9",
-      "StackExchange.Redis >= 2.0.601"
+      "Polly >= 7.1.0",
+      "StackExchange.Redis >= 2.0.601",
+      "Stripe.net >= 17.8.0"
     ]
   },
   "packageFolders": {
@@ -12947,9 +13001,17 @@
             "target": "Package",
             "version": "[2.1.9, )"
           },
+          "Polly": {
+            "target": "Package",
+            "version": "[7.1.0, )"
+          },
           "StackExchange.Redis": {
             "target": "Package",
             "version": "[2.0.601, )"
+          },
+          "Stripe.net": {
+            "target": "Package",
+            "version": "[17.8.0, )"
           }
         },
         "imports": [

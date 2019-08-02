@@ -51,7 +51,7 @@ services:
     image: events/orderapi
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      IdentityUrl: http://192.168.1.22:5065
+      IdentityUrl: http://172.20.10.8:5065
       SQLSERVER_HOST: eventdb
       SA_PASSWORD: EventApi(!)
       DATABASE: OrdersDb
@@ -94,6 +94,10 @@ services:
       EventUrl: http://event
       IdentityUrl: 192.168.1.22:5015
       CallBackUrl: http://localhost:5045
+      CartUrl: http://cart
+      OrderUrl: http://order
+      StripePublicKey: pk_test_GJtMaolsgxI5jQtkuq8rDdjD00qbRyn2e8
+      StripePrivateKey: sk_test_NVXfiXyRDmTZVge5c3Zza7Fe00cHgjPL9M
       ASPNETCORE_ENVIRONMENT: Development
     ports:
       - "5045:80"

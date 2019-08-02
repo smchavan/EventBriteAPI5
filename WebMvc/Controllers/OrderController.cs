@@ -11,6 +11,9 @@ using WebMvc.Models.OrderModels;
 using Stripe;
 using Polly.CircuitBreaker;
 using Microsoft.AspNetCore.Authorization;
+using Order = WebMvc.Models.OrderModels.Order;
+using OrderItem = WebMvc.Models.OrderModels.OrderItem;
+using Microsoft.Extensions.Configuration;
 
 namespace WebMvc.Controllers
 {
@@ -21,16 +24,16 @@ namespace WebMvc.Controllers
         private readonly IOrderService _orderSvc;
         private readonly IIdentityService<ApplicationUser> _identitySvc;
         private readonly ILogger<OrderController> _logger;
-        private readonly PaymentSettings paymentSettings;
+        private readonly IConfiguration _config;
 
 
-        public OrderController(IOptions<PaymentSettings> paymentSettings, ILogger<OrderController> logger, IOrderService orderSvc, ICartService cartSvc, IIdentityService<ApplicationUser> identitySvc)
+        public OrderController(IConfiguration config, ILogger<OrderController> logger, IOrderService orderSvc, ICartService cartSvc, IIdentityService<ApplicationUser> identitySvc)
         {
             _identitySvc = identitySvc;
             _orderSvc = orderSvc;
             _cartSvc = cartSvc;
             _logger = logger;
-            this.paymentSettings = paymentSettings.Value;
+            _config = config;
         }
 
 
@@ -39,7 +42,7 @@ namespace WebMvc.Controllers
             var user =   _identitySvc.Get(HttpContext.User);
             var cart = await _cartSvc.GetCart(user);
             var order = _cartSvc.MapCartToOrder(cart);
-            ViewBag.StripePublishableKey = paymentSettings.StripePublicKey;
+            ViewBag.StripePublishableKey = _config["StripePublicKey"];
             return View(order);
         }
 
@@ -71,7 +74,7 @@ namespace WebMvc.Controllers
 
                 var chargeService = new StripeChargeService();
 
-                chargeService.ApiKey = paymentSettings.StripePrivateKey;
+                chargeService.ApiKey = _config["StripePrivateKey"];
 
 
                 StripeCharge stripeCharge = null;

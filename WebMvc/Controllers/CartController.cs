@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using System.Diagnostics;
 using WebMvc.Services;
 using WebMvc.Models;
 using WebMvc.Models.CartModels;
 using Polly.CircuitBreaker;
-using WebMvc.Services;
-using WebMvc.Models;
 
 namespace WebMvc.Controllers
 {
@@ -104,7 +99,7 @@ namespace WebMvc.Controllers
                 HandleBrokenCircuitException();
             }
 
-            return RedirectToAction("Index", "Catalog");
+            return RedirectToAction("Index", "Event");
 
         }
         //public async Task WriteOutIdentityInfo()

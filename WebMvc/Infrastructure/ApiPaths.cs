@@ -38,6 +38,8 @@ namespace WebMvc.Infrastructure
 
             }
 
+        }
+
 
             public static class Basket
             {
@@ -81,4 +83,4 @@ namespace WebMvc.Infrastructure
 
         }
     }
-}
+

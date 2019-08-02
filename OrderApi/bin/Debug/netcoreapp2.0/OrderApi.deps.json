@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "01bad01c863e8d485d5f44dd3767118ad3420016"
+    "signature": "888602a5f8f80b9a5c3e46091fac6fd18546eac9"
   },
   "compilationOptions": {
     "defines": [
@@ -31,7 +31,9 @@
           "Microsoft.AspNetCore.All": "2.0.9",
           "Microsoft.EntityFrameworkCore.Tools": "2.1.1",
           "Microsoft.NETCore.App": "2.0.0",
+          "Polly": "7.1.0",
           "Pomelo.EntityFrameworkCore.MySql": "2.1.1",
+          "Stripe.net": "17.8.0",
           "Swashbuckle.AspNetCore": "3.0.0"
         },
         "runtime": {
@@ -2970,6 +2972,17 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "Polly/7.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.1.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Polly.dll": {}
+        }
+      },
       "Pomelo.EntityFrameworkCore.MySql/2.1.1": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": "2.1.1",
@@ -3346,6 +3359,23 @@
         },
         "compile": {
           "lib/netstandard1.5/StackExchange.Redis.StrongName.dll": {}
+        }
+      },
+      "Stripe.net/17.8.0": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "Newtonsoft.Json": "11.0.2",
+          "System.Console": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.2/Stripe.net.dll": {
+            "assemblyVersion": "17.8.0.0",
+            "fileVersion": "17.8.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.2/Stripe.net.dll": {}
         }
       },
       "Swashbuckle.AspNetCore/3.0.0": {
@@ -6119,6 +6149,13 @@
       "path": "newtonsoft.json.bson/1.0.1",
       "hashPath": "newtonsoft.json.bson.1.0.1.nupkg.sha512"
     },
+    "Polly/7.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mpQsvlEn4ipgICh5CGyVLPV93RFVzOrBG7wPZfzY8gExh7XgWQn0GCDY9nudbUEJ12UiGPP9i4+CohghBvzhmg==",
+      "path": "polly/7.1.0",
+      "hashPath": "polly.7.1.0.nupkg.sha512"
+    },
     "Pomelo.EntityFrameworkCore.MySql/2.1.1": {
       "type": "package",
       "serviceable": true,
@@ -6342,6 +6379,13 @@
       "sha512": "sha512-qrfSB1BnmM17V20A4yvvNA0HNiDgnBd/CcjaeMKMA4qtup1uuBUMyhl20oj31fRVo71E/fXTbmQCuM9ytBJs6w==",
       "path": "stackexchange.redis.strongname/1.2.4",
       "hashPath": "stackexchange.redis.strongname.1.2.4.nupkg.sha512"
+    },
+    "Stripe.net/17.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DRXWxeRgZNBPuNminjCg/PiSZZrYV/MIutagbkwQZTBivUPLhvo0n/wXDnXZlJb52iPGV/5VyNAg2aDMkU77/w==",
+      "path": "stripe.net/17.8.0",
+      "hashPath": "stripe.net.17.8.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/3.0.0": {
       "type": "package",

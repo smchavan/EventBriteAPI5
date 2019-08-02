@@ -2849,6 +2849,15 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "Polly/7.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Polly.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {}
+        }
+      },
       "Pomelo.EntityFrameworkCore.MySql/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -3276,6 +3285,21 @@
         },
         "runtime": {
           "lib/netstandard1.5/StackExchange.Redis.StrongName.dll": {}
+        }
+      },
+      "Stripe.net/17.8.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Console": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.2/Stripe.net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.2/Stripe.net.dll": {}
         }
       },
       "Swashbuckle.AspNetCore/3.0.0": {
@@ -8399,6 +8423,21 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
+    "Polly/7.1.0": {
+      "sha512": "mpQsvlEn4ipgICh5CGyVLPV93RFVzOrBG7wPZfzY8gExh7XgWQn0GCDY9nudbUEJ12UiGPP9i4+CohghBvzhmg==",
+      "type": "package",
+      "path": "polly/7.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.1/Polly.dll",
+        "lib/netstandard1.1/Polly.xml",
+        "lib/netstandard2.0/Polly.dll",
+        "lib/netstandard2.0/Polly.xml",
+        "polly.7.1.0.nupkg.sha512",
+        "polly.nuspec"
+      ]
+    },
     "Pomelo.EntityFrameworkCore.MySql/2.1.1": {
       "sha512": "V/W72zl2iWUWdSvj0c9chzssv9OUdSbEiEeOmP3D5Co5CbAtOiyyFwov0hVN+D/VNGhUQGszUltIWuoYEjTHhQ==",
       "type": "package",
@@ -8890,6 +8929,19 @@
         "lib/netstandard1.5/StackExchange.Redis.StrongName.xml",
         "stackexchange.redis.strongname.1.2.4.nupkg.sha512",
         "stackexchange.redis.strongname.nuspec"
+      ]
+    },
+    "Stripe.net/17.8.0": {
+      "sha512": "DRXWxeRgZNBPuNminjCg/PiSZZrYV/MIutagbkwQZTBivUPLhvo0n/wXDnXZlJb52iPGV/5VyNAg2aDMkU77/w==",
+      "type": "package",
+      "path": "stripe.net/17.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Stripe.net.dll",
+        "lib/netstandard1.2/Stripe.net.dll",
+        "stripe.net.17.8.0.nupkg.sha512",
+        "stripe.net.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/3.0.0": {
@@ -13768,7 +13820,9 @@
       "Microsoft.AspNetCore.All >= 2.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 2.1.1",
       "Microsoft.NETCore.App >= 2.0.0",
+      "Polly >= 7.1.0",
       "Pomelo.EntityFrameworkCore.MySql >= 2.1.1",
+      "Stripe.net >= 17.8.0",
       "Swashbuckle.AspNetCore >= 3.0.0"
     ]
   },
@@ -13846,9 +13900,17 @@
             "version": "[2.0.0, )",
             "autoReferenced": true
           },
+          "Polly": {
+            "target": "Package",
+            "version": "[7.1.0, )"
+          },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[2.1.1, )"
+          },
+          "Stripe.net": {
+            "target": "Package",
+            "version": "[17.8.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

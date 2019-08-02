@@ -59,6 +59,27 @@ services:
     ports:
     - published: 1448
       target: 1433
+  order:
+    build:
+      context: C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi
+      dockerfile: Dockerfile
+    container_name: orderapi
+    depends_on:
+    - mssqlserver
+    - tokenserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DATABASE: OrdersDb
+      IdentityUrl: http://172.20.10.8:5065
+      SA_PASSWORD: EventApi(!)
+      SQLSERVER_HOST: eventdb
+    image: events/orderapi
+    networks:
+      backend: null
+      frontend: null
+    ports:
+    - published: 5065
+      target: 80
   tokenserver:
     build:
       context: C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi
@@ -82,13 +103,19 @@ services:
       dockerfile: Dockerfile
     container_name: webshop1
     depends_on:
+    - cart
     - event
+    - order
     - tokenserver
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       CallBackUrl: http://localhost:5045
+      CartUrl: http://cart
       EventUrl: http://event
       IdentityUrl: 192.168.1.22:5015
+      OrderUrl: http://order
+      StripePrivateKey: sk_test_NVXfiXyRDmTZVge5c3Zza7Fe00cHgjPL9M
+      StripePublicKey: pk_test_GJtMaolsgxI5jQtkuq8rDdjD00qbRyn2e8
     image: events/webmvc
     networks:
       frontend: null

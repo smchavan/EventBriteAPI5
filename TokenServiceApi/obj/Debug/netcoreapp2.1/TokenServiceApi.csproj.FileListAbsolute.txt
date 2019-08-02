@@ -5,7 +5,6 @@ C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi\bin\Debug\netcoreapp2
 C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi\bin\Debug\netcoreapp2.1\TokenServiceApi.pdb
 C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi\bin\Debug\netcoreapp2.1\TokenServiceApi.Views.dll
 C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi\bin\Debug\netcoreapp2.1\TokenServiceApi.Views.pdb
-C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi\obj\Debug\netcoreapp2.1\TokenServiceApi.csprojAssemblyReference.cache
 C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi\obj\Debug\netcoreapp2.1\TokenServiceApi.csproj.CoreCompileInputs.cache
 C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi\obj\Debug\netcoreapp2.1\TokenServiceApi.RazorAssemblyInfo.cache
 C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi\obj\Debug\netcoreapp2.1\TokenServiceApi.RazorAssemblyInfo.cs
