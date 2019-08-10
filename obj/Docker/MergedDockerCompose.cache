@@ -22,6 +22,11 @@ services:
       ConnectionString: basket.data
       IdentityUrl: http://192.168.1.22:5015
     image: events/cartapi
+    logging:
+      driver: json-file
+      options:
+        max-file: '10'
+        max-size: 200k
     networks:
       backend: null
       frontend: null
@@ -42,6 +47,11 @@ services:
       DatabaseUserPassword: EventApi(!)
       ExternalEventBaseUrl: http://localhost:5060
     image: events/eventapi
+    logging:
+      driver: json-file
+      options:
+        max-file: '10'
+        max-size: 200k
     networks:
       backend: null
       frontend: null
@@ -74,6 +84,11 @@ services:
       SA_PASSWORD: EventApi(!)
       SQLSERVER_HOST: eventdb
     image: events/orderapi
+    logging:
+      driver: json-file
+      options:
+        max-file: '10'
+        max-size: 200k
     networks:
       backend: null
       frontend: null
@@ -117,6 +132,11 @@ services:
       StripePrivateKey: sk_test_NVXfiXyRDmTZVge5c3Zza7Fe00cHgjPL9M
       StripePublicKey: pk_test_GJtMaolsgxI5jQtkuq8rDdjD00qbRyn2e8
     image: events/webmvc
+    logging:
+      driver: json-file
+      options:
+        max-file: '10'
+        max-size: 200k
     networks:
       frontend: null
     ports:

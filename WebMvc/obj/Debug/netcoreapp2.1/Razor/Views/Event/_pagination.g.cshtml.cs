@@ -59,7 +59,7 @@ using WebMvc.Models;
             WriteLiteral("\n<div class=\"esh-pager\">\n    <div class=\"container\">\n        <article class=\"esh-pager-wrapper row\">\n            <nav>\n                ");
             EndContext();
             BeginContext(175, 331, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1eb6434601f64255bf53e64f58588feb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa98c028141d42ad948bc931d4f420c3", async() => {
                 BeginContext(456, 46, true);
                 WriteLiteral("\n                    Previous\n                ");
                 EndContext();
@@ -147,7 +147,7 @@ AddHtmlAttributeValue(" ", 225, Model.Previous, 226, 15, false);
             WriteLiteral("\n                </span>\n\n                ");
             EndContext();
             BeginContext(724, 316, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ec65460cf0841c7957307a1f3526400", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "94e99a3ed8dc48b396892a27bf8411b5", async() => {
                 BeginContext(994, 42, true);
                 WriteLiteral("\n                    Next\n                ");
                 EndContext();

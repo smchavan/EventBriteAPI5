@@ -65,7 +65,7 @@ using WebMvc.Models;
             WriteLiteral("                ");
             EndContext();
             BeginContext(187, 110, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c2f6f0f92d7c4dafb9f66a8d66cb8357", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1e57762402c24f0cba4b66d53a8c88df", async() => {
                 BeginContext(282, 11, false);
 #line 7 "C:\Users\smvnc\source\repos\EventBriteAPI5\WebMvc\Views\Shared\_Header.cshtml"
                                                                                                          Write(header.Text);

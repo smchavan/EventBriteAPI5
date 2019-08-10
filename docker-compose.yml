@@ -10,6 +10,11 @@ services:
       context: .\EventCatalogAPI
       dockerfile: Dockerfile
     image: events/eventapi
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
     environment:
       DatabaseServer: mssqlserver
       DatabaseName: EventDb
@@ -30,6 +35,11 @@ services:
       context: .\CartApi
       dockerfile: Dockerfile
     image: events/cartapi
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       IdentityUrl: http://192.168.1.22:5015
@@ -49,6 +59,11 @@ services:
       context: .\OrderApi
       dockerfile: Dockerfile
     image: events/orderapi
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       IdentityUrl: http://192.168.1.22:5015
@@ -64,7 +79,7 @@ services:
     depends_on:
       - mssqlserver
       - tokenserver
-      
+   
       
 
   tokenserver:
@@ -89,6 +104,11 @@ services:
       context: .\webmvc
       dockerfile: Dockerfile
     image: events/webmvc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
     container_name: webshop1
     environment:
       EventUrl: http://event

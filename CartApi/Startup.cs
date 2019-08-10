@@ -5,9 +5,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using CartApi.Infrastructure.Filters;
+using CartApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -65,7 +67,9 @@ namespace CartApi
                 });
                 options.OperationFilter<AuthorizeCheckOperationFilter>();
             });
-            }
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<ICartRepository, RedisCartRepository>();
+        }
 
         private void ConfigureAuthService(IServiceCollection services)
         {
