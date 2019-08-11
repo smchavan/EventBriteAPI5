@@ -13,6 +13,9 @@
             <span>@Model.Price.ToString("N2")</span>
         </div>
         <input type="hidden" asp-for="@Model.EventCategory" name="category" />
+        <input type="hidden" asp-for="@Model.Price" name="Price" />
+        <input type="hidden" asp-for="@Model.PictureUrl" name="pictureUrl" />
+        
         <input type="hidden" asp-for="@Model.EventCategoryId" name="categoryId" />
         <input type="hidden" asp-for="@Model.EventState" name="state" />
         <input type="hidden" asp-for="@Model.EventStateId" name="stateId" />

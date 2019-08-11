@@ -20,7 +20,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionString: basket.data
-      IdentityUrl: http://192.168.1.22:5015
+      IdentityUrl: http:// 192.168.1.22:5015
     image: events/cartapi
     logging:
       driver: json-file
@@ -80,7 +80,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       DATABASE: OrdersDb
-      IdentityUrl: http://192.168.1.22:5015
+      IdentityUrl: http:// 192.168.1.22:5015
       SA_PASSWORD: EventApi(!)
       SQLSERVER_HOST: eventdb
     image: events/orderapi
@@ -127,7 +127,7 @@ services:
       CallBackUrl: http://localhost:5045
       CartUrl: http://cart
       EventUrl: http://event
-      IdentityUrl: http://192.168.1.22:5015
+      IdentityUrl: http:// 192.168.1.22:5015
       OrderUrl: http://order
       StripePrivateKey: sk_test_NVXfiXyRDmTZVge5c3Zza7Fe00cHgjPL9M
       StripePublicKey: pk_test_GJtMaolsgxI5jQtkuq8rDdjD00qbRyn2e8

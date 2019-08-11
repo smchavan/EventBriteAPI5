@@ -42,7 +42,7 @@ services:
         max-file: "10"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      IdentityUrl: http://192.168.1.22:5015
+      IdentityUrl: http:// 192.168.1.22:5015
       ConnectionString: basket.data
     ports:
       - "5005:80"
@@ -53,6 +53,7 @@ services:
     depends_on:
       - basket.data
       - tokenserver
+      - rabbitmq
 
   order:
     build:
@@ -66,7 +67,7 @@ services:
         max-file: "10"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      IdentityUrl: http://192.168.1.22:5015
+      IdentityUrl: http:// 192.168.1.22:5015
       SQLSERVER_HOST: eventdb
       SA_PASSWORD: EventApi(!)
       DATABASE: OrdersDb
@@ -79,6 +80,7 @@ services:
     depends_on:
       - mssqlserver
       - tokenserver
+      - rabbitmq
    
       
 
@@ -112,7 +114,7 @@ services:
     container_name: webshop1
     environment:
       EventUrl: http://event
-      IdentityUrl: http://192.168.1.22:5015
+      IdentityUrl: http:// 192.168.1.22:5015
       CallBackUrl: http://localhost:5045
       CartUrl: http://cart
       OrderUrl: http://order
@@ -147,3 +149,16 @@ services:
       - "6378:6379"  
     networks:
       - backend
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: myrabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "5671:5671"
+    volumes:
+      - ~/rabbitmq:/var/lib/rabbitmq/mnesia   
+    networks:
+      - backend 
