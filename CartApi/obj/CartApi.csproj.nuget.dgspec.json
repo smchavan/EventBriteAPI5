@@ -43,6 +43,22 @@
       "frameworks": {
         "netcoreapp2.1": {
           "dependencies": {
+            "Autofac.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[5.1.4, )"
+            },
+            "MassTransit.Autofac": {
+              "target": "Package",
+              "version": "[5.1.4, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[5.1.4, )"
+            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",

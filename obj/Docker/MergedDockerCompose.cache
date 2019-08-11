@@ -16,11 +16,12 @@ services:
     container_name: cartapi
     depends_on:
     - basket.data
+    - rabbitmq
     - tokenserver
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionString: basket.data
-      IdentityUrl: http:// 192.168.1.22:5015
+      IdentityUrl: http://192.168.1.22:5015
     image: events/cartapi
     logging:
       driver: json-file
@@ -76,11 +77,12 @@ services:
     container_name: orderapi
     depends_on:
     - mssqlserver
+    - rabbitmq
     - tokenserver
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       DATABASE: OrdersDb
-      IdentityUrl: http:// 192.168.1.22:5015
+      IdentityUrl: http://192.168.1.22:5015
       SA_PASSWORD: EventApi(!)
       SQLSERVER_HOST: eventdb
     image: events/orderapi
@@ -95,6 +97,21 @@ services:
     ports:
     - published: 5065
       target: 80
+  rabbitmq:
+    container_name: rabbitmq
+    hostname: myrabbitmq
+    image: rabbitmq:3-management
+    networks:
+      backend: null
+    ports:
+    - published: 15672
+      target: 15672
+    - published: 5672
+      target: 5672
+    - published: 5671
+      target: 5671
+    volumes:
+    - C:\Users\smvnc\rabbitmq:/var/lib/rabbitmq/mnesia:rw
   tokenserver:
     build:
       context: C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi
@@ -127,7 +144,7 @@ services:
       CallBackUrl: http://localhost:5045
       CartUrl: http://cart
       EventUrl: http://event
-      IdentityUrl: http:// 192.168.1.22:5015
+      IdentityUrl: http://192.168.1.22:5015
       OrderUrl: http://order
       StripePrivateKey: sk_test_NVXfiXyRDmTZVge5c3Zza7Fe00cHgjPL9M
       StripePublicKey: pk_test_GJtMaolsgxI5jQtkuq8rDdjD00qbRyn2e8

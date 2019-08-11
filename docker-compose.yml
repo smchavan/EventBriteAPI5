@@ -42,7 +42,7 @@ services:
         max-file: "10"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      IdentityUrl: http:// 192.168.1.22:5015
+      IdentityUrl: http://192.168.1.22:5015
       ConnectionString: basket.data
     ports:
       - "5005:80"
@@ -67,7 +67,7 @@ services:
         max-file: "10"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      IdentityUrl: http:// 192.168.1.22:5015
+      IdentityUrl: http://192.168.1.22:5015
       SQLSERVER_HOST: eventdb
       SA_PASSWORD: EventApi(!)
       DATABASE: OrdersDb
@@ -114,7 +114,7 @@ services:
     container_name: webshop1
     environment:
       EventUrl: http://event
-      IdentityUrl: http:// 192.168.1.22:5015
+      IdentityUrl: http://192.168.1.22:5015
       CallBackUrl: http://localhost:5045
       CartUrl: http://cart
       OrderUrl: http://order

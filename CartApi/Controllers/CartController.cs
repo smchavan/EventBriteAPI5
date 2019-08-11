@@ -13,19 +13,16 @@ namespace CartApi.Controllers
 {
     [Route("api/v1/[controller]")]
 
-
-    
-    public class CartController : ControllerBase
+    public class CartController : Controller
     {
         private ICartRepository _repository;
         private readonly ILogger _logger;
         public CartController(ICartRepository repository,
-             ILoggerFactory logger)
+            ILoggerFactory logger)
         {
             _repository = repository;
             _logger = logger.CreateLogger<CartController>();
         }
-
 
         // GET api/v1/cart/5
         [HttpGet("{id}")]
@@ -57,6 +54,5 @@ namespace CartApi.Controllers
 
 
         }
-
     }
 }

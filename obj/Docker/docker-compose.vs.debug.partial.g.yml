@@ -10,18 +10,20 @@ services:
         com.microsoft.visual-studio.project-name: "CartApi"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
-      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_cart$
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
     volumes:
       - C:\Users\smvnc\source\repos\EventBriteAPI5\CartApi:/app
       - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
-#$nuget_volume_mapping_cart$
+      - C:\Users\smvnc\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Microsoft\Xamarin\NuGet\:/root/.nuget/fallbackpackages:ro
+      - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_cart$ \"bin/Debug/netcoreapp2.1/CartApi.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath /root/.nuget/fallbackpackages2  \"bin/Debug/netcoreapp2.1/CartApi.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
 
@@ -34,18 +36,20 @@ services:
         com.microsoft.visual-studio.project-name: "EventCatalogAPI"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
-      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_event$
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
     volumes:
       - C:\Users\smvnc\source\repos\EventBriteAPI5\EventCatalogAPI:/app
       - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
-#$nuget_volume_mapping_event$
+      - C:\Users\smvnc\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Microsoft\Xamarin\NuGet\:/root/.nuget/fallbackpackages:ro
+      - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_event$ \"bin/Debug/netcoreapp2.1/EventCatalogAPI.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath /root/.nuget/fallbackpackages2  \"bin/Debug/netcoreapp2.1/EventCatalogAPI.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
 
@@ -59,18 +63,20 @@ services:
         com.microsoft.visual-studio.project-name: "OrderApi"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
-      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_order$
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
     volumes:
       - C:\Users\smvnc\source\repos\EventBriteAPI5\OrderApi:/app
       - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
-#$nuget_volume_mapping_order$
+      - C:\Users\smvnc\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Microsoft\Xamarin\NuGet\:/root/.nuget/fallbackpackages:ro
+      - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_order$ \"bin/Debug/netcoreapp2.0/OrderApi.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath /root/.nuget/fallbackpackages2  \"bin/Debug/netcoreapp2.0/OrderApi.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
 
@@ -84,18 +90,20 @@ services:
         com.microsoft.visual-studio.project-name: "TokenServiceApi"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
-      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_tokenserver$
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
     volumes:
       - C:\Users\smvnc\source\repos\EventBriteAPI5\TokenServiceApi:/app
       - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
-#$nuget_volume_mapping_tokenserver$
+      - C:\Users\smvnc\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Microsoft\Xamarin\NuGet\:/root/.nuget/fallbackpackages:ro
+      - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_tokenserver$ \"bin/Debug/netcoreapp2.1/TokenServiceApi.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath /root/.nuget/fallbackpackages2  \"bin/Debug/netcoreapp2.1/TokenServiceApi.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
 
@@ -109,18 +117,20 @@ services:
         com.microsoft.visual-studio.project-name: "WebMvc"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
-      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_webmvc$
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
     volumes:
       - C:\Users\smvnc\source\repos\EventBriteAPI5\webmvc:/app
       - C:\Users\smvnc\vsdbg\vs2017u5:/remote_debugger:ro
-#$nuget_volume_mapping_webmvc$
+      - C:\Users\smvnc\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Microsoft\Xamarin\NuGet\:/root/.nuget/fallbackpackages:ro
+      - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_webmvc$ \"bin/Debug/netcoreapp2.1/WebMvc.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath /root/.nuget/fallbackpackages2  \"bin/Debug/netcoreapp2.1/WebMvc.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
 

@@ -18,35 +18,38 @@ namespace ShoesOnContainers.Services.OrderApi.Controllers
 {
     [Route("api/v1/[controller]")]
     [Authorize]
-     
+
     public class OrdersController : Controller
     {
 
         private readonly OrdersContext _ordersContext;
-        // private readonly IOptionsSnapshot<OrderSettings> _settings;
+        //private readonly IOptionsSnapshot<OrderSettings> _settings;
 
         private readonly IConfiguration _config;
+
         private readonly ILogger<OrdersController> _logger;
         private IBus _bus;
 
-        public OrdersController(OrdersContext ordersContext, ILogger<OrdersController> logger, //IOptionsSnapshot<OrderSettings> settings, 
-            IConfiguration config, IBus bus)
+        public OrdersController(OrdersContext ordersContext,
+            ILogger<OrdersController> logger,
+            IConfiguration config,
+            //IOptionsSnapshot<OrderSettings> settings, 
+            IBus bus)
         {
-           
             //_settings = settings;
-           // _ordersContext = ordersContext;
+            _config = config;
+            // _ordersContext = ordersContext;
             _ordersContext = ordersContext ?? throw new ArgumentNullException(nameof(ordersContext));
-          
+
             ((DbContext)ordersContext).ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 
             _bus = bus;
             _logger = logger;
-            _config = config;
         }
 
 
 
-        // POST api/Order
+        // POST api/Order/new
         [Route("new")]
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
@@ -91,20 +94,20 @@ namespace ShoesOnContainers.Services.OrderApi.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> GetOrder(int id)
         {
-           
+
             var item = await _ordersContext.Orders
-                .Include(x=>x.OrderItems)
-                .SingleOrDefaultAsync(ci => ci.OrderId==id);
+                .Include(x => x.OrderItems)
+                .SingleOrDefaultAsync(ci => ci.OrderId == id);
             if (item != null)
             {
                 return Ok(item);
             }
 
             return NotFound();
- 
+
         }
 
-        
+
 
         [Route("")]
         [HttpGet]
